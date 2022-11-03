@@ -42,7 +42,7 @@ window.loginauthentication = {
         console.log('calling function enterotp');
         GM.xmlHttpRequest({
             method: "GET",
-            url: "https://nb7jihrfpj.execute-api.us-east-1.amazonaws.com/V1/get-otp",
+            url: "https://nb7jihrfpj.execute-api.us-east-1.amazonaws.com/V1/get-otp-dev",
             onprogress: function(e) {
                 console.log('onprogress', (e.loaded / e.total), e);
             },
