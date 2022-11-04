@@ -222,7 +222,7 @@ function starttherotation(dataforD)
         {
          let   dataforDashboard=dataforD
       let countTime = 0
-      let openbeoreSeconds = 20
+      let openbeoreSeconds = 120
       let numberofDashboards =   Object.keys(dataforDashboard).length
       for ( let x=0;x<numberofDashboards;x++)
       {
