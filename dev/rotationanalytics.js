@@ -218,7 +218,7 @@ function getUpdatedJSON()
     })
     }
 function starttherotation(dataforD)
-        {
+        {debugger;
          let   dataforDashboard=dataforD
       let countTime = 0
       let openbeoreSeconds = 20

@@ -1,0 +1,20 @@
+git init
+git status  --> to check the uncommited files
+git add . --> to add all the files to git server
+git commit -m "firstcommit"
+git remote add origin https://github.com/vijaySc1/Tampermonkey.git 
+git push -u origin master 
+
+
+git add .
+git commit -m "firstcommit" 
+git remote add origin https://github.com/vijaySc1/Tampermonkey.git 
+git push -u origin master
+
+
+
+
+https://github.com/vijaySc1/Test1/blob/master/Login%20Authentication_Allinone.js
+
+git remote add origin https://github.com/vijaySc1/analyticdashboard.git
+git push -u origin main
