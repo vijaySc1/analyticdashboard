@@ -228,12 +228,13 @@ function starttherotation(dataforD)
           console.log(window.firstRunFlag)
           console.log(window.firstRunFlag && x==0)
           if (window.firstRunFlag && x==0)
-          {
-              GM_openInTab(dataforDashboard[0].src,{active:true})
-              console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
+          {	  GM_openInTab(dataforDashboard[0].src,{insert:true})
+             // GM_openInTab(dataforDashboard[0].src,{active:true})
+              //console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
               GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
-              console.log(GM_getValue("activetab"))
-              countTime+=dataforDashboard[x].time
+              //console.log(GM_getValue("activetab"))
+             // countTime+=dataforDashboard[x].time
+			 countTime+=openbeoreSeconds+1;
               window.firstRunFlag=false
               console.log(x)
               console.log(0)
@@ -243,8 +244,9 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{insert:true})
               console.log("Opening Tab:  "+dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
-              setTimeout(function(){GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-                                   console.log(GM_getValue("activetab"));
+              setTimeout(function(){
+				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+                  //console.log(GM_getValue("activetab"));
                                    },openbeoreSeconds*1000)
               countTime+=dataforDashboard[x].time+openbeoreSeconds
               console.log(x)
@@ -260,9 +262,9 @@ function starttherotation(dataforD)
             GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
             console.log(GM_getValue("activetab"))
         },(countTime)*1000)
-        console.log(x)
-        console.log((countTime-openbeoreSeconds))
-        console.log(countTime)
+        //console.log(x)
+        //console.log((countTime-openbeoreSeconds))
+        //console.log(countTime)
         countTime+=dataforDashboard[x].time
 
 
