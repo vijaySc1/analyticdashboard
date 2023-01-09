@@ -89,7 +89,7 @@
           	this.move(percent);
           }
         };
-
+		
 		return ProBar;
 	}
 
@@ -192,7 +192,7 @@
                       if(dashdataforheading[x].src==currentURL)
                       {
 
-                                          window.probar.goto(100,dashdataforheading[x].time);
+                        window.probar.goto(100,dashdataforheading[x].time);
                       }
                   }
 
@@ -235,8 +235,7 @@ function starttherotation(dataforD)
               console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
-              window.probar.goto(100,dashdataforheading[x].time);
-			  console.log(x)
+              console.log(x)
               console.log(0)
               continue
           }
