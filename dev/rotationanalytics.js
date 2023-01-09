@@ -218,7 +218,7 @@ function getUpdatedJSON()
     })
     }
 function starttherotation(dataforD)
-        {debugger;
+      {debugger;
          let   dataforDashboard=dataforD
       let countTime = 0
       let openbeoreSeconds = 20
@@ -235,7 +235,8 @@ function starttherotation(dataforD)
               console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
-              console.log(x)
+              window.probar.goto(100,dashdataforheading[x].time);
+			  console.log(x)
               console.log(0)
               continue
           }
