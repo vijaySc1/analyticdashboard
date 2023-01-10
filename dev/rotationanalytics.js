@@ -198,9 +198,9 @@
 
             }
         })
-		if(GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1)==window.location.href.substring(window.location.href.lastIndexOf("/")+1)){
+		/* if(GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1)==window.location.href.substring(window.location.href.lastIndexOf("/")+1)){
 			GM_setValue("activetab",GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1));
-		}
+		} */
     }
 	
 	// Functions gets updated JSON after each round and shows the respective dashboards it also calls the auto switcher.
@@ -234,8 +234,10 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{active:true})
               console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-              //GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-			  //console.log(GM_getValue("activetab"))
+              setTimeout(function(){
+				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+			  },10000); 
+              console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
               console.log(x)
