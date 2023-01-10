@@ -167,11 +167,10 @@
        document.head.appendChild(styleSheet)
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
+	
 	function closeTabonTimeout()
-    {
-           GM_addValueChangeListener("activetab",function()
-         {
-            let workspaceid = window.location.href
+    {		
+			let workspaceid = window.location.href
             workspaceid = workspaceid.substring(workspaceid.lastIndexOf("/")+1)
             console.log([workspaceid,GM_getValue("activetab")])
             if (workspaceid != GM_getValue("activetab"))
@@ -197,10 +196,8 @@
                   }
 
             }
-        })
-		/* if(GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1)==window.location.href.substring(window.location.href.lastIndexOf("/")+1)){
-			GM_setValue("activetab",GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1));
-		} */
+       
+		
     }
 	
 	// Functions gets updated JSON after each round and shows the respective dashboards it also calls the auto switcher.
