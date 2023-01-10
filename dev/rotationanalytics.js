@@ -199,7 +199,7 @@
             }
         })
 		if(GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1)==window.location.href.substring(window.location.href.lastIndexOf("/")+1)){
-			GM_setValue("activetab",GM_getValue('dataforDashboard')[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+			GM_setValue("activetab",GM_getValue('dataforDashboard')[0].src.substring(GM_getValue('dataforDashboard')[0].src.lastIndexOf("/")+1));
 		}
     }
 	
