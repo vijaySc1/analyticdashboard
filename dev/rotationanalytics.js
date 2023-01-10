@@ -167,10 +167,11 @@
        document.head.appendChild(styleSheet)
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
-	
 	function closeTabonTimeout()
-    {		
-			let workspaceid = window.location.href
+    {
+           GM_addValueChangeListener("activetab",function()
+         {
+            let workspaceid = window.location.href
             workspaceid = workspaceid.substring(workspaceid.lastIndexOf("/")+1)
             console.log([workspaceid,GM_getValue("activetab")])
             if (workspaceid != GM_getValue("activetab"))
@@ -196,8 +197,7 @@
                   }
 
             }
-       
-		
+        })
     }
 	
 	// Functions gets updated JSON after each round and shows the respective dashboards it also calls the auto switcher.
@@ -231,8 +231,8 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{active:true})
               console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-              GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-			  console.log(GM_getValue("activetab"))
+              GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
+              console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
               console.log(x)
@@ -243,9 +243,8 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{insert:true})
               console.log("Opening Tab:  "+dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
-              setTimeout(function(){
-				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-                  console.log(GM_getValue("activetab"));
+              setTimeout(function(){GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+                                   console.log(GM_getValue("activetab"));
                                    },openbeoreSeconds*1000)
               countTime+=dataforDashboard[x].time+openbeoreSeconds
               console.log(x)
@@ -275,6 +274,3 @@ function starttherotation(dataforD)
           }
 
       }}
-	  
-	  
-	  
