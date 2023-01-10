@@ -89,7 +89,7 @@
           	this.move(percent);
           }
         };
-		
+
 		return ProBar;
 	}
 
@@ -168,7 +168,7 @@
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
 	function closeTabonTimeout()
-    {debugger;
+    {
            GM_addValueChangeListener("activetab",function()
          {
             let workspaceid = window.location.href
@@ -192,7 +192,7 @@
                       if(dashdataforheading[x].src==currentURL)
                       {
 
-                        window.probar.goto(100,dashdataforheading[x].time);
+                                          window.probar.goto(100,dashdataforheading[x].time);
                       }
                   }
 
@@ -218,7 +218,7 @@ function getUpdatedJSON()
     })
     }
 function starttherotation(dataforD)
-      {debugger;
+        {
          let   dataforDashboard=dataforD
       let countTime = 0
       let openbeoreSeconds = 20
@@ -228,11 +228,14 @@ function starttherotation(dataforD)
           console.log(window.firstRunFlag)
           console.log(window.firstRunFlag && x==0)
           if (window.firstRunFlag && x==0)
-          {	  GM_openInTab(dataforDashboard[0].src,{insert:true})
-              setTimeout(GM_openInTab(dataforDashboard[0].src,{active:true}),2000);
-              //console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-              GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
-              //console.log(GM_getValue("activetab"))
+          {
+              GM_openInTab(dataforDashboard[0].src,{active:true})
+              console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
+              closeTabonTimeout();
+			  setTimeout(function(){
+				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+			  },3000) 
+              console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
               console.log(x)
@@ -245,7 +248,7 @@ function starttherotation(dataforD)
               console.log("Opening Tab:  "+dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
               setTimeout(function(){
 				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-                  //console.log(GM_getValue("activetab"));
+                  console.log(GM_getValue("activetab"));
                                    },openbeoreSeconds*1000)
               countTime+=dataforDashboard[x].time+openbeoreSeconds
               console.log(x)
