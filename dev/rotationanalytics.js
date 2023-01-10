@@ -198,6 +198,9 @@
 
             }
         })
+		if(GM_getValue('dataforDashboard')[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1)==window.location.href.substring(workspaceid.lastIndexOf("/")+1)){
+			GM_setValue("activetab",GM_getValue('dataforDashboard')[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+		}
     }
 	
 	// Functions gets updated JSON after each round and shows the respective dashboards it also calls the auto switcher.
@@ -277,3 +280,6 @@ function starttherotation(dataforD)
           }
 
       }}
+	  
+	  
+	  
