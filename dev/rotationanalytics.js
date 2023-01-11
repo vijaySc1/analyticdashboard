@@ -260,11 +260,11 @@ function starttherotation(dataforD)
         setTimeout(function(){
             GM_openInTab(dataforDashboard[x].src,{insert:true})
             console.log("Opening Tab:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-                             },(countTime-openbeoreSeconds)*1000)
+                             },((countTime-openbeoreSeconds)+10)*1000)
         setTimeout(function(){
             GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
             console.log(GM_getValue("activetab"))
-        },(countTime)*1000);
+        },(countTime+10)*1000);
         console.log(x)
         console.log((countTime-openbeoreSeconds))
         console.log(countTime)
