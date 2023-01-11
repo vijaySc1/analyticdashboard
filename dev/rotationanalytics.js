@@ -219,7 +219,8 @@ function getUpdatedJSON()
     }
 function starttherotation(dataforD)
         {
-         let   dataforDashboard=dataforD
+	  GM_setValue("activetab","");	
+      let   dataforDashboard=dataforD
       let countTime = 0
       let openbeoreSeconds = 20
       let numberofDashboards =   Object.keys(dataforDashboard).length
