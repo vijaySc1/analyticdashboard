@@ -168,7 +168,7 @@
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
 	function closeTabonTimeout()
-    {console.log("hello" +GM_getValue("activetab"));
+    {
            GM_addValueChangeListener("activetab",function()
          {
             let workspaceid = window.location.href
@@ -232,11 +232,7 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{active:true})
               console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-			
-		   setTimeout(function(){
-				 GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
-			 },10000)
-				console.log("value updated" + GM_getValue("activetab"));
+              GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
               console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
@@ -260,11 +256,11 @@ function starttherotation(dataforD)
         setTimeout(function(){
             GM_openInTab(dataforDashboard[x].src,{insert:true})
             console.log("Opening Tab:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-                             },((countTime-openbeoreSeconds)+10)*1000)
+                             },(countTime-openbeoreSeconds)*1000)
         setTimeout(function(){
             GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
             console.log(GM_getValue("activetab"))
-        },(countTime+10)*1000);
+        },(countTime)*1000)
         console.log(x)
         console.log((countTime-openbeoreSeconds))
         console.log(countTime)
