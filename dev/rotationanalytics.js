@@ -168,9 +168,6 @@
        document.head.appendChild(styleSheet)
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
-	if(!GM_getValue("canceltab")){
-		GM_setValue("canceltab",0);
-	}
 	function closeTabonTimeout()
     { let canceltab=GM_getValue("canceltab");
 		
@@ -229,6 +226,7 @@ function getUpdatedJSON()
     }
 function starttherotation(dataforD)
         {
+	  GM_setValue("canceltab",0);	
 	  GM_setValue("activetab","");	
       let   dataforDashboard=dataforD
       let countTime = 0
