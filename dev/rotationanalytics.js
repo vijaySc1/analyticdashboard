@@ -276,11 +276,11 @@ function starttherotation(dataforD)
         countTime+=dataforDashboard[x].time */
 
 
-          if(x==numberofDashboards-1)
+         /* if(x==numberofDashboards-1)
           {
               setTimeout(function(){getUpdatedJSON();
                                    console.log("Calling for the function again");
                                    },(countTime-openbeoreSeconds)*1000)
-          }
+          }*/
 
       }}
