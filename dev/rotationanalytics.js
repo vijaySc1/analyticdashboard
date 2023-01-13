@@ -172,7 +172,7 @@
 		GM_setValue("canceltab",0);
 	}
 	function closeTabonTimeout()
-    { let canceltab=GM_setValue("canceltab");
+    { let canceltab=GM_getValue("canceltab");
 		
            GM_addValueChangeListener("activetab",function()
          {  
