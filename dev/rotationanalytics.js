@@ -239,9 +239,9 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{active:true})
               console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-              
+              setTimeout(fucntion(){
 				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-			  
+			  },10000);
               console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
