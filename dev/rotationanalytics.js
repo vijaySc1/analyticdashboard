@@ -188,7 +188,7 @@
 										  
 										  setTimeout(function(){
 											GM_openInTab(dataforDashboard[x+1].src,{insert:true})
-										  },(((dashdataforheading[x].time)/2)*1000)
+										  },((dashdataforheading[x].time)/2)*1000)
 										  
 										  setTimeout(function(){
 											GM_setValue("activetab",dataforDashboard[x+1].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
