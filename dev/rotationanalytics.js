@@ -205,6 +205,7 @@ function getUpdatedJSON()
     {
 	let dataforDashboard=[{"name": "PL & BL Eligible Logins", "src": "https://experience.adobe.com/#/@hdfcbank/so:hdfcba0/analytics/spa/index.html?lazyLoadPhpSession=1#/workspace/edit/62988ba48baa6a45fa1cca5c", "time": 30}, {"name": "PL & BL Loans Disbursed", "src": "https://experience.adobe.com/#/@hdfcbank/so:hdfcba0/analytics/spa/index.html?lazyLoadPhpSession=1#/workspace/edit/62988bdf8baa6a45fa1cca61", "time": 30}, {"name": "CC -Eligible Logins", "src": "https://experience.adobe.com/#/@hdfcbank/so:hdfcba0/analytics/spa/index.html?lazyLoadPhpSession=1#/workspace/edit/62988afe7d3bee4bea7a6e2e", "time": 30}, {"name": "CC - Issued", "src": "https://experience.adobe.com/#/@hdfcbank/so:hdfcba0/analytics/spa/index.html?lazyLoadPhpSession=1#/workspace/edit/629886058baa6a45fa1cc9cb", "time": 30}, {"name": "Insta SA - Eligible Login", "src": "https://experience.adobe.com/#/@hdfcbank/so:hdfcba0/analytics/spa/index.html?lazyLoadPhpSession=1#/workspace/edit/63624fb92380ef115c6f6c0e", "time": 30}, {"name": "Insta SA - Accounts Opened", "src": "https://experience.adobe.com/#/@hdfcbank/so:hdfcba0/analytics/spa/index.html?lazyLoadPhpSession=1#/workspace/edit/636257172380ef115c6f6c49", "time": 30}];	
 	 GM_setValue("dataforDashboard", dataforDashboard);
+	 starttherotation(dataforDashboard);
    /*  GM.xmlHttpRequest({
     method: "GET",
     url: "https://y4vs6aal1d.execute-api.ap-south-1.amazonaws.com/v2/tv-dashboard-v2",
@@ -212,7 +213,7 @@ function getUpdatedJSON()
     let dataforDashboard=JSON.parse(response.responseText);
         console.log(dataforDashboard)
     GM_setValue("dataforDashboard", dataforDashboard);
-    starttherotation(dataforDashboard)
+    
   },
    onerror: function(r) {
         console.error('onerror', r);
