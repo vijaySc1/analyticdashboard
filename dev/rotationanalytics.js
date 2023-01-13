@@ -230,9 +230,9 @@ function starttherotation(dataforD)
           {
               GM_openInTab(dataforDashboard[0].src,{active:true})
               console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-              setTimeout(function(){
+              
 				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-			  },10000)
+			  
               console.log(GM_getValue("activetab"))
               countTime+=dataforDashboard[x].time
               window.firstRunFlag=false
@@ -246,7 +246,7 @@ function starttherotation(dataforD)
               console.log("Opening Tab:  "+dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
               setTimeout(function(){GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
                                    console.log(GM_getValue("activetab"));
-                                   },(openbeoreSeconds+10)*1000)
+                                   },(openbeoreSeconds)*1000)
               countTime+=dataforDashboard[x].time+openbeoreSeconds
               console.log(x)
               console.log(0)
@@ -256,11 +256,11 @@ function starttherotation(dataforD)
         setTimeout(function(){
             GM_openInTab(dataforDashboard[x].src,{insert:true})
             console.log("Opening Tab:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-                             },((countTime-openbeoreSeconds)+10)*1000)
+                             },((countTime-openbeoreSeconds))*1000)
         setTimeout(function(){
             GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
             console.log(GM_getValue("activetab"))
-        },(countTime+10)*1000) 
+        },(countTime)*1000) 
         console.log(x)
         console.log((countTime-openbeoreSeconds))
         console.log(countTime)
