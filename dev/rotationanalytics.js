@@ -186,16 +186,17 @@
 
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
-										  setTimeout(function(){
-
-											GM_openInTab(dashdataforheading[canceltab+1].src,{insert:true})
-										  },((dashdataforheading[canceltab].time)/2)*1000)
-										  
-										  setTimeout(function(){
-											GM_setValue("activetab",dashdataforheading[x+1].src.substring(dashdataforheading[x].src.lastIndexOf("/")+1))
-											canceltab+=1;
+										   setTimeout(function(){
+											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1))
+											canceltab=canceltab + 1;
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
+										  
+										  setTimeout(function(){
+											GM_openInTab(dashdataforheading[canceltab+1].src,{insert:true})
+											},((dashdataforheading[canceltab].time)/2)*1000)
+										  
+										 
                       }
                   
 
