@@ -169,21 +169,13 @@
     }
 	function closeTabonTimeout()
     {
+		
            GM_addValueChangeListener("activetab",function()
          {
             let workspaceid = window.location.href
             workspaceid = workspaceid.substring(workspaceid.lastIndexOf("/")+1)
             console.log([workspaceid,GM_getValue("activetab")])
-            if (workspaceid != GM_getValue("activetab"))
-            {
-            console.log("Closing Tab")
-            window.close()
-            }
-            else
-            {
-                console.log("No Need of closing");
-                console.log("Starting Timer");
-                let currentURL=window.location.href;
+            let currentURL=window.location.href;
                 let dashdataforheading=GM_getValue('dataforDashboard');
                 let numberofDashboards =   Object.keys(dashdataforheading).length
                 for ( let x=0;x<numberofDashboards;x++)
@@ -193,10 +185,13 @@
                       {
 
                                           window.probar.goto(100,dashdataforheading[x].time);
+										  setTimeout(function(){
+											window.close();
+										  },dashdataforheading[x].time)
                       }
                   }
 
-            }
+            
         })
     }
 	
@@ -261,11 +256,11 @@ function starttherotation(dataforD)
         setTimeout(function(){
             GM_openInTab(dataforDashboard[x].src,{insert:true})
             console.log("Opening Tab:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-                             },((countTime-openbeoreSeconds)+10)*1000)
+                             },((countTime-openbeoreSeconds))*1000)
         setTimeout(function(){
             GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
             console.log(GM_getValue("activetab"))
-        },(countTime+10)*1000)
+        },(countTime)*1000) 30
         console.log(x)
         console.log((countTime-openbeoreSeconds))
         console.log(countTime)
