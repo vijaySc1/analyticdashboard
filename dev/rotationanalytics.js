@@ -1,6 +1,7 @@
 (function (root) {
 	"use strict";
   window.firstRunFlag=true
+  window.canceltab=0;
 	////////////////////
 	// all functions. //
 	////////////////////
@@ -171,31 +172,32 @@
     {
 		
            GM_addValueChangeListener("activetab",function()
-         {
+         {  
             let workspaceid = window.location.href
             workspaceid = workspaceid.substring(workspaceid.lastIndexOf("/")+1)
             console.log([workspaceid,GM_getValue("activetab")])
             let currentURL=window.location.href;
                 let dashdataforheading=GM_getValue('dataforDashboard');
                 let numberofDashboards =   Object.keys(dashdataforheading).length
-                for ( let x=0;x<numberofDashboards;x++)
-				  {
-                      console.log(x)
-                      if(dashdataforheading[x].src==currentURL)
+                
+                      console.log(canceltab)
+                      if(dashdataforheading[canceltab].src==currentURL)
                       {
 
-                                          window.probar.goto(100,dashdataforheading[x].time);
+                                          window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
 										  setTimeout(function(){
-											GM_openInTab(dataforDashboard[x+1].src,{insert:true})
-										  },((dashdataforheading[x].time)/2)*1000)
+
+											GM_openInTab(dataforDashboard[canceltab+1].src,{insert:true})
+										  },((dashdataforheading[canceltab].time)/2)*1000)
 										  
 										  setTimeout(function(){
 											GM_setValue("activetab",dataforDashboard[x+1].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
+											canceltab+=1;
 											window.close();
-										  },(dashdataforheading[x].time)*1000)
+										  },(dashdataforheading[canceltab].time)*1000)
                       }
-                  }
+                  
 
             
         })
