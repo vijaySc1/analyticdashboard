@@ -188,11 +188,11 @@
 										  
 										  setTimeout(function(){
 
-											GM_openInTab(dataforDashboard[canceltab+1].src,{insert:true})
+											GM_openInTab(dashdataforheading[canceltab+1].src,{insert:true})
 										  },((dashdataforheading[canceltab].time)/2)*1000)
 										  
 										  setTimeout(function(){
-											GM_setValue("activetab",dataforDashboard[x+1].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
+											GM_setValue("activetab",dashdataforheading[x+1].src.substring(dashdataforheading[x].src.lastIndexOf("/")+1))
 											canceltab+=1;
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
