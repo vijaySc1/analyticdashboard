@@ -187,7 +187,7 @@
                                           window.probar.goto(100,dashdataforheading[x].time);
 										  setTimeout(function(){
 											window.close();
-										  },dashdataforheading[x].time)
+										  },(dashdataforheading[x].time)*1000)
                       }
                   }
 
