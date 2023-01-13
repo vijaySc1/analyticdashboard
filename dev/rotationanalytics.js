@@ -1,7 +1,7 @@
 (function (root) {
 	"use strict";
   window.firstRunFlag=true
-  window.canceltab=0;
+
 	////////////////////
 	// all functions. //
 	////////////////////
@@ -168,8 +168,11 @@
        document.head.appendChild(styleSheet)
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
+	if(!GM_getValue("canceltab")){
+		GM_setValue("canceltab",0);
+	}
 	function closeTabonTimeout()
-    {
+    { let canceltab=GM_setValue("canceltab");
 		
            GM_addValueChangeListener("activetab",function()
          {  
@@ -187,8 +190,8 @@
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
 										   setTimeout(function(){
-											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1))
-											canceltab=canceltab + 1;
+											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1));
+											GM_setValue("canceltab",canceltab + 1);
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
 										  
