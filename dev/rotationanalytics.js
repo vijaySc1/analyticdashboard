@@ -185,7 +185,13 @@
                       {
 
                                           window.probar.goto(100,dashdataforheading[x].time);
+										  
 										  setTimeout(function(){
+											GM_openInTab(dataforDashboard[x+1].src,{insert:true})
+										  },((dashdataforheading[x].time)/2)*1000)
+										  
+										  setTimeout(function(){
+											GM_setValue("activetab",dataforDashboard[x+1].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
 											window.close();
 										  },(dashdataforheading[x].time)*1000)
                       }
@@ -253,18 +259,18 @@ function starttherotation(dataforD)
               console.log(20)
               continue
           }
-        setTimeout(function(){
+       /*  setTimeout(function(){
             GM_openInTab(dataforDashboard[x].src,{insert:true})
             console.log("Opening Tab:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
                              },((countTime-openbeoreSeconds))*1000)
         setTimeout(function(){
             GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
             console.log(GM_getValue("activetab"))
-        },(countTime)*1000) 
-        console.log(x)
+        },(countTime)*1000)  */
+       /*  console.log(x)
         console.log((countTime-openbeoreSeconds))
         console.log(countTime)
-        countTime+=dataforDashboard[x].time
+        countTime+=dataforDashboard[x].time */
 
 
           if(x==numberofDashboards-1)
