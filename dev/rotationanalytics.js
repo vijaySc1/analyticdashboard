@@ -187,8 +187,8 @@
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
 										   setTimeout(function(){
-											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1));
 											GM_setValue("canceltab",canceltab + 1);
+											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1));
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
 										  
