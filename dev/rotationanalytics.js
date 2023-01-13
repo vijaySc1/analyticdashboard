@@ -169,7 +169,7 @@
        $('body').append('<div style="position: absolute;    width: 152px;    bottom: 0px;    right: 1px;   background: #fff;    height: 13px;   flex-direction: column;    border-radius: 5px 5px 0px 0px;    font-family: sans-serif;    font-size: 13px;    display: flex;    align-items: center;    padding: 10px;    color: #fff;    background-color: #0d66d0;">Powered by DWAO</div>');
     }
 	function closeTabonTimeout()
-    { let canceltab=GM_getValue("canceltab");
+    { let canceltab=parseInt(localStorage.getItem("canceltab"));
 		
            GM_addValueChangeListener("activetab",function()
          {  
@@ -187,7 +187,7 @@
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
 										   setTimeout(function(){
-											GM_setValue("canceltab",canceltab + 1);
+											localStorage.setItem("canceltab",canceltab + 1);
 											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1));
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
@@ -226,7 +226,7 @@ function getUpdatedJSON()
     }
 function starttherotation(dataforD)
         {
-	  GM_setValue("canceltab",0);	
+	  localStorage.setItem('canceltab', 0);		
 	  GM_setValue("activetab","");	
       let   dataforDashboard=dataforD
       let countTime = 0
