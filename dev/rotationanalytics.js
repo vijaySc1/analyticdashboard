@@ -181,13 +181,10 @@
             let numberofDashboards =   Object.keys(dashdataforheading).length
              console.log(canceltab)
                       if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
-						window.probar.goto(100,dashdataforheading[canceltab].time);
-						setTimeout(function(){
-							canceltab=0;
-							getUpdatedJSON();
-						},((dashdataforheading[canceltab].time)/2)*1000)
 						
-					  }else if(dashdataforheading[canceltab].src==currentURL)
+						canceltab=0;
+						getUpdatedJSON();
+						}else if(dashdataforheading[canceltab].src==currentURL)
                       {
 
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
@@ -243,11 +240,13 @@ function starttherotation(dataforD)
       
 	  console.log(window.firstRunFlag)
 	  if(parseInt(localStorage.getItem("canceltab"))+1==numberofDashboards){
+		  window.probar.goto(100,dashdataforheading[canceltab].time);
 	   setTimeout(function(){
+			localStorage.setItem("canceltab",0);
 			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
 			 window.close();
-		},((dataforDashboard[canceltab].time)/2)*1000)
-			localStorage.setItem("canceltab",0);
+		},((dataforDashboard[canceltab].time))*1000)
+		
 		}else{
 		  localStorage.setItem('canceltab', 0);
 		  GM_openInTab(dataforDashboard[0].src,{active:true})
