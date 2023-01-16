@@ -173,15 +173,16 @@
 		
            GM_addValueChangeListener("activetab",function()
          {  
-            let workspaceid = window.location.href
+            let workspaceid = window.location.href;
             workspaceid = workspaceid.substring(workspaceid.lastIndexOf("/")+1)
             console.log([workspaceid,GM_getValue("activetab")])
             let currentURL=window.location.href;
-                let dashdataforheading=GM_getValue('dataforDashboard');
-                let numberofDashboards =   Object.keys(dashdataforheading).length
-                
-                      console.log(canceltab)
-                      if(dashdataforheading[canceltab].src==currentURL)
+            let dashdataforheading=GM_getValue('dataforDashboard');
+            let numberofDashboards =   Object.keys(dashdataforheading).length
+             console.log(canceltab)
+                      if(numberofDashboards==canceltab){
+						getUpdatedJSON();  
+					  }else if(dashdataforheading[canceltab].src==currentURL)
                       {
 
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
