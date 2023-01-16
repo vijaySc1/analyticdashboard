@@ -182,13 +182,11 @@
              console.log(canceltab)
                       if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
 						setTimeout(function(){
-							GM_setValue("activetab",dashdataforheading[0].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")));
+							canceltab=0;
+							getUpdatedJSON();
 							window.close();
 						},(dashdataforheading[canceltab].time)*1000)
-						setTimeout(function(){
-											localStorage.setItem("canceltab",0);  
-											GM_openInTab(dashdataforheading[0].src,{insert:true})
-											},((dashdataforheading[canceltab].time)/2)*1000)
+						
 						
 					  }else if(dashdataforheading[canceltab].src==currentURL)
                       {
@@ -236,7 +234,10 @@ function getUpdatedJSON()
 function starttherotation(dataforD)
         {
 	  localStorage.setItem('canceltab', 0);		
-	  GM_setValue("activetab","");	
+	 if(!GM_getValue("activetab")){
+		GM_setValue("activetab",""); 
+	 }
+	 	
       let   dataforDashboard=dataforD
       let countTime = 0
       let openbeoreSeconds = 20
