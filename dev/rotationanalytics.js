@@ -232,7 +232,7 @@ function getUpdatedJSON()
 function starttherotation(dataforD)
         {
 	  localStorage.setItem('canceltab', 0);		
-	   //GM_setValue("activetab","");	
+	  GM_setValue("activetab","");	
       let   dataforDashboard=dataforD
       let countTime = 0
       let openbeoreSeconds = 20
