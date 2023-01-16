@@ -256,10 +256,7 @@ function starttherotation(dataforD)
 		  console.log(GM_getValue("activetab"))
 		  
 		  window.firstRunFlag=false
-		  console.log(x)
-		  console.log(0)
-		  
-	  }else{
+		}else{
 	   //window.probar.goto(100,dataforDashboard[canceltab].time);
 										  
 	   setTimeout(function(){
