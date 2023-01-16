@@ -185,7 +185,7 @@
 						getUpdatedJSON();
 						setTimeout(function(){
 						window.close();
-						},dashdataforheading[canceltab].time)*1000)
+						},(dashdataforheading[canceltab].time)*1000)
 					  }else if(dashdataforheading[canceltab].src==currentURL)
                       {
 
