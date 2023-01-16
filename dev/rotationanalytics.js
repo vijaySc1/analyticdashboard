@@ -183,9 +183,6 @@
                       if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
 						window.probar.goto(100,dashdataforheading[canceltab].time);
 						setTimeout(function(){
-							window.close();
-						},(dashdataforheading[canceltab].time)*1000)
-						setTimeout(function(){
 							canceltab=0;
 							getUpdatedJSON();
 						},((dashdataforheading[canceltab].time)/2)*1000)
@@ -268,12 +265,12 @@ function starttherotation(dataforD)
 	   setTimeout(function(){
 		GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
 		window.close();
-	  },(dataforDashboard[canceltab].time)*1000)
+	  },((dataforDashboard[canceltab].time)/2)*1000)
 	  
-	  setTimeout(function(){
+	  
 		 localStorage.setItem("canceltab",0);
 		GM_openInTab(dataforDashboard[0].src,{insert:true})
-		},((dataforDashboard[canceltab].time)/2)*1000)
+		
 		  
 	  }
 	  
