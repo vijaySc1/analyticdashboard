@@ -245,7 +245,7 @@ function starttherotation(dataforD)
       let numberofDashboards = Object.keys(dataforDashboard).length;
       
 	  console.log(window.firstRunFlag)
-	  if(localStorage.getItem("canceltab")+1==numberofDashboards){
+	  if(parseInt(localStorage.getItem("canceltab"))+1==numberofDashboards){
 	   setTimeout(function(){
 			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
 		},((dataforDashboard[canceltab].time)/2)*1000)
