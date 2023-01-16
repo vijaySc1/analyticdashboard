@@ -180,12 +180,16 @@
             let dashdataforheading=GM_getValue('dataforDashboard');
             let numberofDashboards =   Object.keys(dashdataforheading).length
              console.log(canceltab)
-                      if(numberofDashboards==canceltab+1){
-						canceltab=0;
-						getUpdatedJSON();
+                      if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
 						setTimeout(function(){
-						window.close();
+							GM_setValue("activetab",dashdataforheading[0].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")));
+							window.close();
 						},(dashdataforheading[canceltab].time)*1000)
+						setTimeout(function(){
+											localStorage.setItem("canceltab",0);  
+											GM_openInTab(dashdataforheading[0].src,{insert:true})
+											},((dashdataforheading[canceltab].time)/2)*1000)
+						
 					  }else if(dashdataforheading[canceltab].src==currentURL)
                       {
 
