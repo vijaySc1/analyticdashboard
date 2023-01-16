@@ -187,12 +187,12 @@
                                           window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
 										   setTimeout(function(){
-											localStorage.setItem("canceltab",canceltab + 1);
 											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1));
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
 										  
 										  setTimeout(function(){
+											localStorage.setItem("canceltab",canceltab + 1);  
 											GM_openInTab(dashdataforheading[canceltab+1].src,{insert:true})
 											},((dashdataforheading[canceltab].time)/2)*1000)
 										  
