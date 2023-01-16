@@ -180,8 +180,8 @@
             let dashdataforheading=GM_getValue('dataforDashboard');
             let numberofDashboards =   Object.keys(dashdataforheading).length
              console.log(canceltab)
-                      if(numberofDashboards==canceltab){
-						getUpdatedJSON();  
+                      if(numberofDashboards==canceltab+1){
+						getUpdatedJSON();
 					  }else if(dashdataforheading[canceltab].src==currentURL)
                       {
 
