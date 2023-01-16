@@ -231,10 +231,7 @@ function getUpdatedJSON()
     }) */
     }
 function starttherotation(dataforD)
-{		if(!GM_getValue("firsttimerunflag")){
-		GM_setValue("firsttimerunflag","true");
-		}
-		if(!localStorage.getItem("canceltab")){
+{		if(!localStorage.getItem("canceltab")){
 		localStorage.setItem('canceltab', 0);
 		}
 	  GM_setValue("activetab",""); 
@@ -248,14 +245,15 @@ function starttherotation(dataforD)
 	  if(localStorage.getItem("canceltab")+1==numberofDashboards){
 	   //window.probar.goto(100,dataforDashboard[canceltab].time);
 										  
-	   setTimeout(function(){
-		GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
-		window.close();
-	  },((dataforDashboard[canceltab].time)/2)*1000)
-		localStorage.setItem("canceltab",0);
-		GM_openInTab(dataforDashboard[0].src,{insert:true})
+		setTimeout(function(){
+			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
+			window.close();
+		  },((dataforDashboard[canceltab].time)/2)*1000)
+			localStorage.setItem("canceltab",0);
+			GM_openInTab(dataforDashboard[0].src,{insert:true})
 		}else{
-		GM_openInTab(dataforDashboard[0].src,{active:true})
+		  localStorage.setItem('canceltab', 0);
+		  GM_openInTab(dataforDashboard[0].src,{active:true})
 		  setTimeout(function(){
 			  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
 		  },10000);
