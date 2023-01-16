@@ -181,12 +181,14 @@
             let numberofDashboards =   Object.keys(dashdataforheading).length
              console.log(canceltab)
                       if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
+						window.probar.goto(100,dashdataforheading[canceltab].time);
+						setTimeout(function(){
+							window.close();
+						},(dashdataforheading[canceltab].time)*1000)
 						setTimeout(function(){
 							canceltab=0;
 							getUpdatedJSON();
-							window.close();
-						},(dashdataforheading[canceltab].time)*1000)
-						
+						},((dashdataforheading[canceltab].time)/2)*1000)
 						
 					  }else if(dashdataforheading[canceltab].src==currentURL)
                       {
@@ -232,66 +234,47 @@ function getUpdatedJSON()
     }) */
     }
 function starttherotation(dataforD)
-        {
-	    localStorage.setItem('canceltab', 0);		
-	
-		GM_setValue("activetab",""); 
-	 
-	 	
-      let   dataforDashboard=dataforD
+{		if(!GM_getValue("firsttimerunflag")){
+		GM_setValue("firsttimerunflag","true");
+		}
+		if(!localStorage.getItem("canceltab")){
+		localStorage.setItem('canceltab', 0);
+		}
+	  GM_setValue("activetab",""); 
+	  let canceltab=parseInt(localStorage.getItem("canceltab"));
+	  let dataforDashboard=dataforD;
       let countTime = 0
       let openbeoreSeconds = 20
-      let numberofDashboards =   Object.keys(dataforDashboard).length
-      for ( let x=0;x<numberofDashboards;x++)
-      {
-          console.log(window.firstRunFlag)
-          console.log(window.firstRunFlag && x==0)
-          if (window.firstRunFlag && x==0)
-          {
-              GM_openInTab(dataforDashboard[0].src,{active:true})
-              console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-              setTimeout(function(){
-				  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-			  },10000);
-              console.log(GM_getValue("activetab"))
-              countTime+=dataforDashboard[x].time
-              window.firstRunFlag=false
-              console.log(x)
-              console.log(0)
-              continue
-          }
-          else if (x==0)
-          {
-              GM_openInTab(dataforDashboard[0].src,{insert:true})
-              console.log("Opening Tab:  "+dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1))
-              setTimeout(function(){GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
-                                   console.log(GM_getValue("activetab"));
-                                   },(openbeoreSeconds)*1000)
-              countTime+=dataforDashboard[x].time+openbeoreSeconds
-              console.log(x)
-              console.log(0)
-              console.log(20)
-              continue
-          }
-       /*  setTimeout(function(){
-            GM_openInTab(dataforDashboard[x].src,{insert:true})
-            console.log("Opening Tab:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-                             },((countTime-openbeoreSeconds))*1000)
-        setTimeout(function(){
-            GM_setValue("activetab",dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
-            console.log(GM_getValue("activetab"))
-        },(countTime)*1000)  */
-       /*  console.log(x)
-        console.log((countTime-openbeoreSeconds))
-        console.log(countTime)
-        countTime+=dataforDashboard[x].time */
-
-
-         /* if(x==numberofDashboards-1)
-          {
-              setTimeout(function(){getUpdatedJSON();
-                                   console.log("Calling for the function again");
-                                   },(countTime-openbeoreSeconds)*1000)
-          }*/
-
-      }}
+      let numberofDashboards = Object.keys(dataforDashboard).length;
+      
+	  console.log(window.firstRunFlag)
+	  if (GM_getValue("firsttimerunflag")=="true")
+	  {
+		  GM_setValue("firsttimerunflag","false");
+		  GM_openInTab(dataforDashboard[0].src,{active:true})
+		  //console.log("Opening Tab For First Time:  "+dataforDashboard[x].src.substring(dataforDashboard[x].src.lastIndexOf("/")+1))
+		  setTimeout(function(){
+			  GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+		  },10000);
+		  console.log(GM_getValue("activetab"))
+		  
+		  window.firstRunFlag=false
+		  console.log(x)
+		  console.log(0)
+		  
+	  }else{
+	   //window.probar.goto(100,dataforDashboard[canceltab].time);
+										  
+	   setTimeout(function(){
+		GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
+		window.close();
+	  },(dataforDashboard[canceltab].time)*1000)
+	  
+	  setTimeout(function(){
+		 localStorage.setItem("canceltab",0);
+		GM_openInTab(dataforDashboard[0].src,{insert:true})
+		},((dataforDashboard[canceltab].time)/2)*1000)
+		  
+	  }
+	  
+}
