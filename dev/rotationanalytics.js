@@ -185,11 +185,7 @@
 						canceltab=0;
 						getUpdatedJSON();
 						}else if(dashdataforheading[canceltab].src==currentURL)
-                      {
-
-                                          window.probar.goto(100,dashdataforheading[canceltab].time);
-										  
-										   setTimeout(function(){
+                      {					 setTimeout(function(){
 											GM_setValue("activetab",dashdataforheading[canceltab+1].src.substring(dashdataforheading[canceltab].src.lastIndexOf("/")+1));
 											window.close();
 										  },(dashdataforheading[canceltab].time)*1000)
@@ -198,6 +194,8 @@
 											localStorage.setItem("canceltab",canceltab + 1);  
 											GM_openInTab(dashdataforheading[canceltab+1].src,{insert:true})
 											},((dashdataforheading[canceltab].time)/2)*1000)
+											
+										window.probar.goto(100,dashdataforheading[canceltab].time);
 										  
 										 
                       }
@@ -240,13 +238,12 @@ function starttherotation(dataforD)
       
 	  console.log(window.firstRunFlag)
 	  if(parseInt(localStorage.getItem("canceltab"))+1==numberofDashboards){
-		  window.probar.goto(100,dashdataforheading[canceltab].time);
-	   setTimeout(function(){
+		setTimeout(function(){
 			localStorage.setItem("canceltab",0);
 			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
 			 window.close();
 		},((dataforDashboard[canceltab].time))*1000)
-		
+		window.probar.goto(100,dataforDashboard[canceltab].time);
 		}else{
 		  localStorage.setItem('canceltab', 0);
 		  GM_openInTab(dataforDashboard[0].src,{active:true})
