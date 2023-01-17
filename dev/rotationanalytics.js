@@ -181,8 +181,8 @@
             let numberofDashboards =   Object.keys(dashdataforheading).length
              console.log(canceltab)
                       if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
-						
 						canceltab=0;
+						GM_openInTab(dashdataforheading[0].src,{insert:true})
 						getUpdatedJSON();
 						}else if(dashdataforheading[canceltab].src==currentURL)
                       {					 setTimeout(function(){
