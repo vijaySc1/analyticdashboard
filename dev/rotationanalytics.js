@@ -182,7 +182,6 @@
              console.log(canceltab)
                       if(numberofDashboards==canceltab+1 && dashdataforheading[canceltab].src==currentURL){
 						canceltab=0;
-						GM_openInTab(dashdataforheading[0].src,{insert:true})
 						getUpdatedJSON();
 						}else if(dashdataforheading[canceltab].src==currentURL)
                       {					 setTimeout(function(){
@@ -239,11 +238,14 @@ function starttherotation(dataforD)
 	  console.log(window.firstRunFlag)
 	  if(parseInt(localStorage.getItem("canceltab"))+1==numberofDashboards){
 		setTimeout(function(){
-			localStorage.setItem("canceltab",0);
 			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
 			console.log("active tab value is" +GM_getValue("activetab"));
 			 window.close();
 		},((dataforDashboard[canceltab].time))*1000)
+		setTimeout(function(){
+			localStorage.setItem("canceltab",0);
+			GM_openInTab(dashdataforheading[0].src,{insert:true})
+		},((dataforDashboard[canceltab].time)/2)*1000)
 		window.probar.goto(100,dataforDashboard[canceltab].time);
 		}else{
 		  localStorage.setItem('canceltab', 0);
