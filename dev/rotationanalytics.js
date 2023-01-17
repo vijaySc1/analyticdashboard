@@ -240,7 +240,8 @@ function starttherotation(dataforD)
 	  if(parseInt(localStorage.getItem("canceltab"))+1==numberofDashboards){
 		setTimeout(function(){
 			localStorage.setItem("canceltab",0);
-			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")));
+			GM_setValue("activetab",dataforDashboard[0].src.substring(dataforDashboard[0].src.lastIndexOf("/")+1));
+			console.log("active tab value is" +GM_getValue("activetab"));
 			 window.close();
 		},((dataforDashboard[canceltab].time))*1000)
 		window.probar.goto(100,dataforDashboard[canceltab].time);
