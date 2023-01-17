@@ -208,14 +208,14 @@
 function getUpdatedJSON()
     {
 	
-    GM.xmlHttpRequest({
+     GM.xmlHttpRequest({
     method: "GET",
     url: "https://y4vs6aal1d.execute-api.ap-south-1.amazonaws.com/v2/tv-dashboard-v2",
     onload: function(response) {
     let dataforDashboard=JSON.parse(response.responseText);
         console.log(dataforDashboard)
     GM_setValue("dataforDashboard", dataforDashboard);
-    
+    starttherotation(dataforDashboard);
   },
    onerror: function(r) {
         console.error('onerror', r);
