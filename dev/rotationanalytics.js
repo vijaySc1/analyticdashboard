@@ -244,7 +244,7 @@ function starttherotation(dataforD)
 		},((dataforDashboard[canceltab].time))*1000)
 		setTimeout(function(){
 			localStorage.setItem("canceltab",0);
-			GM_openInTab(dashdataforheading[0].src,{insert:true})
+			GM_openInTab(dataforDashboard[0].src,{insert:true})
 		},((dataforDashboard[canceltab].time)/2)*1000)
 		window.probar.goto(100,dataforDashboard[canceltab].time);
 		}else{
